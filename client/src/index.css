@@ -1,0 +1,263 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.form-banner img{
+  height: 101%;
+  width: 100%;
+}
+
+.btn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/*loader*/
+.loader-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.loader{
+  width: 48px;
+  height: 48px;
+  border: 5px solid #fff;
+  border-bottom-color: red;
+  border-radius: 50%;
+  display: inline;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0%{
+    transform: rotate(0deg);
+  }
+  100%{
+    transform: rotate(360deg);
+  }
+}
+
+/*navbar*/
+.navbar{
+  background: linear-gradient(
+    160deg,
+    rgba(0, 32, 45, 0.808) 0%,
+    rgb(0, 205, 205) 45%,
+    rgba(0, 32, 45, 0.938) 100%
+  );
+
+}
+
+.nav-link{
+  color: #ffffff !important;
+  position: absolute;
+  width: 250px;
+  max-width: 100%;
+  right: 130px;
+  top: 0;
+  text-align: center;
+}
+
+.navbar-brand{
+  color: rgb(255, 255, 255) !important;
+  position: absolute;
+  left: 120px;
+}
+
+.nav-item2{
+  position: absolute;
+  top: 14px;
+  right: 10px;
+  color: white ;
+}
+
+.logo{
+  position: absolute;
+  top: 5px;
+  left: 30px;
+  width: 65px;
+  border-radius: 20%;
+  border: 1px solid #000000;
+}
+
+.container-nav{
+  display: flex;
+  align-items: center;
+  height: 50px;
+}
+
+.login-container{
+  padding: 0 30px;
+  margin: auto;
+}
+
+.eye-login {
+  position: absolute;
+  top: 50%;
+  right: 3%; /* Adjust the distance from the right side */
+  cursor: pointer;
+}
+
+.pass{
+  position: relative;
+}
+
+.box{
+  background: #ddd7d7;
+  border-radius: 2cap;
+  border-width: 1px;
+  text-align: center;
+  width: 90pc;
+  margin-right: 5px;
+  border: none ;
+}
+
+.searchbox{
+  display: flex;
+  width:40%;
+  height: 33px;
+  margin-top: 20px;
+  /*margin-left: 39%*/;
+}
+
+.searchbox-buffered{
+  display: flex;
+  width:100%;
+  height: 33px;
+  margin: 20px;
+  /*margin-left: 39%*/;
+}
+
+.searchbox-all{
+  display: flex;
+  width:40%;
+  height: 33px;
+  margin-top: 20px;
+  margin-left: 39%;
+}
+
+.add{
+  width: 17%;
+  text-align: center;
+  margin-top: 20px;
+  padding: 3px 2px;
+  background: #ddd7d7;
+  border-width: 2px;
+  border-radius: 2cap
+}
+
+.add-all{
+  width: 17%;
+  text-align: center;
+  margin-top: 20px;
+  padding: 3px 2px;
+  background: #ddd7d7;
+  border-width: 2px;
+  border-radius: 2cap
+}
+
+.availQuant{
+  margin: 0 122px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  padding: 5px 0; 
+  width: 190px;
+  text-align: center;
+  background: #ddd7d7;
+  border-radius: 2cap;
+  border-width: 1px;
+}
+
+
+.stat-head{
+  text-align: center;
+  margin-top: 10px;
+  font-size: xx-large;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.search{
+  margin-right: 5px;
+}
+
+@media only screen and (max-width: 767px) {
+
+    .navbar-link {
+        width: 100%;
+        max-width: none;
+        position: relative;
+        right: auto;
+        text-align: left;
+    }
+
+    .navbar-brand {
+        position: relative;
+        left: 20px;
+        text-align: left;
+    }
+
+    .nav-item2 {
+        position: relative;
+        top: auto;
+        left: 250px;
+    }
+
+    .logo {
+        position: relative;
+        top: 0px;
+        left: 10px;
+    }
+
+    .navbar {
+      background: linear-gradient(
+        160deg,
+        rgba(0, 32, 45, 0.808) 0%,
+        rgb(0, 205, 205) 45%,
+        rgba(0, 32, 45, 0.938) 100%
+      );
+        width: 900px;
+    }
+
+    .searchbox {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    .add {
+      width: 50%;
+      margin-top: 10px;
+  }
+
+    .availQuant {
+        margin: 110px;
+        padding: 5px;
+        width: 50%;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .box {
+        width: 70%;
+        margin-bottom: 5px;
+        height: 35px;
+    }
+
+    .search {
+        margin-right: 0;
+    }
+    .stat-head{
+      text-align: center;
+      width: 900px;
+      margin-top: 20px;
+      font-size: xx-large;
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+}
