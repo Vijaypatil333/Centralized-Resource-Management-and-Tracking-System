@@ -1,1 +1,1 @@
-# It is an inventorry software made for an organisation
+# It is an Inventorry Application (Website) made for an organisation
