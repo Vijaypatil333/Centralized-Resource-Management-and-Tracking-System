@@ -88,12 +88,12 @@ const createInventoryController = async (req, res) => {
       const inventory = new inventoryModel(inventoryData);
       await inventory.save();
 
-      if (remainingQuantity <= bufferedSize) {
+      if (remainingQuantity <= bufferedSize && availableQuantity > bufferedSize) {
         const isbufferedproduct = true;
 
         return res.status(201).send({
           success: true,
-          message: `Now, Only ${remainingQuantity} ${requestedProduct.toUpperCase()} with ${requestedPacking} packing is in stock So, adding ${requestedProduct.toUpperCase()} with ${requestedPacking} packing in Bufferd Products`,
+          message: `Now, Only ${remainingQuantity} ${requestedProduct.toUpperCase()} with ${requestedPacking} packing is in stock. So, adding ${requestedProduct.toUpperCase()} with ${requestedPacking} packing in Buffered Products`,
           isbufferedproduct,
         });
       } else {
@@ -151,7 +151,7 @@ const createInventoryController = async (req, res) => {
       const inventory = new inventoryModel(inventoryData);
       await inventory.save();
 
-      if (availableQuantity > bufferedSize || newQuantity <= bufferedSize) {
+      if (availableQuantity === 0 || availableQuantity > bufferedSize || newQuantity <= bufferedSize) {
         const notBufferedProduct = false;
         return res.status(201).send({
           success: true,
