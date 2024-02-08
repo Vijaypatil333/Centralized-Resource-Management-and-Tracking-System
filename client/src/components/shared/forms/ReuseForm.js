@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import InputType from "./InputType";
 import { Link } from "react-router-dom";
 import { Eye, EyeOff } from 'lucide-react'
-import { handleLogin, handleRegister } from "../../../services/authservice";
+import { handleLogin, handleRegister, handleResetPassword } from "../../../services/authservice";
 
 const Form = ({ formType, submitBtn, formTitle }) => {
   const [email, setEmail] = useState("");
@@ -21,6 +21,9 @@ const Form = ({ formType, submitBtn, formTitle }) => {
           if (formType === "login") return handleLogin(e, email, password);
           else if (formType === "register")
             return handleRegister(e, name, email, password, secretKey);
+          else {
+            handleResetPassword(e, email, password, secretKey);
+          }
         }}
       >
         <h1 className="text-center">{formTitle}</h1>
@@ -85,7 +88,40 @@ const Form = ({ formType, submitBtn, formTitle }) => {
                   <span class="eye-login"> {pass ? <Eye onClick={handleEye}/> : <EyeOff onClick={handleEye}/>} </span>
                   </div>
                   <InputType
-                    lableText={"SecretKey"}
+                    lableText={"Secret Key"}
+                    lableFor={"forsecretKey"}
+                    inputType={"password"}
+                    name={"secretKey"}
+                    value={secretKey}
+                    onChange={(e) => setsecretKey(e.target.value)} //to store input secretKey
+                  />
+                </>
+              );
+            }
+            case formType === "resetPassword": {
+              return (
+                <>
+                  <InputType
+                    lableText={"Email"}
+                    lableFor={"foremail"}
+                    inputType={"email"}
+                    name={"email"}
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)} //to store input mail
+                  />
+                  <div className="pass">
+                  <InputType
+                    lableText={"New Password"}
+                    lableFor={"forpassword"}
+                    inputType={pass ? "password" : "text"}
+                    name={"password"}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)} //to store input password
+                  />
+                  <span class="eye-login"> {pass ? <Eye onClick={handleEye}/> : <EyeOff onClick={handleEye}/>} </span>
+                  </div>
+                  <InputType
+                    lableText={"Secret Key"}
                     lableFor={"forsecretKey"}
                     inputType={"password"}
                     name={"secretKey"}
@@ -101,6 +137,7 @@ const Form = ({ formType, submitBtn, formTitle }) => {
         <div className="justify-content-between">
           {formType === "login" ? (
             <p>
+              <p><Link to="/resetPassword"> <b>Forgot passward ?</b></Link></p>
               Not registered yet?
               <Link to="/register"> <b>Register !</b></Link>
             </p>

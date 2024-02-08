@@ -9,6 +9,11 @@
   width: 100%;
 }
 
+.form-banner-reset img{
+  height: 110%;
+  width: 100%;
+}
+
 .btn{
   display: flex;
   align-items: center;

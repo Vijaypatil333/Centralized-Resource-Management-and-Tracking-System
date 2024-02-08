@@ -15,7 +15,7 @@ export const userLogin = createAsyncThunk(
         toast.success(data.message); //toasing(poping) the message that login successfull
         setTimeout(function () {
           window.location.replace("/"); //to redirect to the home pg after successfull login
-        }, 2000);
+        }, 500);
       }
       return data; 
     } catch (error) {
@@ -45,7 +45,36 @@ export const userRegister = createAsyncThunk(
         toast.success(data.message); //toast the message
         setTimeout(function () {
           window.location.replace("/login"); //to redirect to the login pg after successfull register
-        }, 2000);
+        }, 500);
+      }
+    } catch (error) {
+      console.log(error);
+      if (error.response && error.response.data.message) {
+        //toasting the message that invalid credentials
+        return toast.error(error.response.data.message);
+      } else {
+        return rejectWithValue(error.message);
+      }
+    }
+  }
+);
+
+//reset password
+export const userResetPassword = createAsyncThunk(
+  "auth/resetPassword",
+  async ({ email, password, secretKey }, { rejectWithValue }) => {
+    try {
+      const { data } = await API.post("/auth/resetPassword", {
+        email,
+        password,
+        secretKey,
+      });
+      if (data.success) {
+        //alert("User Registered Successfully!!!");
+        toast.success(data.message); //toast the message
+        setTimeout(function () {
+          window.location.replace("/login"); //to redirect to the login pg after successfull register
+        }, 500);
       }
     } catch (error) {
       console.log(error);

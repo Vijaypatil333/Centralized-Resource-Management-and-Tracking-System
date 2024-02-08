@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getCurrentUser, userLogin, userRegister } from "./authActions";
+import { getCurrentUser, userLogin, userRegister, userResetPassword } from "./authActions";
 
 const token = localStorage.getItem("token") // if already has token then show
   ? localStorage.getItem("token")
@@ -43,6 +43,19 @@ const authSlice = createSlice({
       //state.user = payload.user;
     });
     builder.addCase(userRegister.rejected, (state, { payload }) => {
+      state.loading = false;
+      state.error = payload;
+    });
+    //reset user
+    builder.addCase(userResetPassword.pending, (state) => {
+      state.loading = true;
+      state.error = null;
+    });
+    builder.addCase(userResetPassword.fulfilled, (state, { payload }) => {
+      state.loading = false;
+      //state.user = payload.user;
+    });
+    builder.addCase(userResetPassword.rejected, (state, { payload }) => {
       state.loading = false;
       state.error = payload;
     });

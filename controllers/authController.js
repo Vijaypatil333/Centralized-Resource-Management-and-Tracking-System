@@ -100,4 +100,46 @@ const currentControllerUser = async (req, res) => {
   }
 };
 
-module.exports = { registerController, loginController, currentControllerUser };
+const resetPasswordController = async (req, res) => {
+  try {
+    const existingUser = await userModel.findOne({ email: req.body.email });
+    //validation
+    if (! existingUser) {
+      return res.status(400).send({
+        success: false,
+        message: "User Not Exists!!",
+      });
+    }
+    //hash password
+    const salt = await bcrypt.genSalt(10);
+    const hashPassword = await bcrypt.hash(req.body.password, salt);
+
+    //hash secretKey
+    //const hashsecretkey = await bcrypt.hash(req.body.secretKey, salt);
+    //req.body.secretKey = hashsecretkey;
+
+    //rest data
+    //const user = new userModel(req.body);
+    //await user.save();
+
+    const updatedUser = await userModel.findOneAndUpdate(
+      { email: req.body.email },
+      { password: hashPassword },
+      { new: true } // return the updated document
+    );
+    return res.status(200).send({
+      success: true,
+      message: "Password changed Successfully!!",
+      user: updatedUser,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      message: "Error In reset API",
+      error,
+    });
+  }
+};
+
+module.exports = { registerController, loginController, currentControllerUser, resetPasswordController };

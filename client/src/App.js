@@ -12,6 +12,7 @@ import AllProducts from "./pages/AllProducts";
 import AllMaterials from "./pages/AllMaterials";
 import BufferedProducts from "./pages/BufferedProducts";
 import BufferedMaterials from "./pages/BufferedMaterials";
+import ResetPassword from "./pages/auth/ResetPassword";
 
 function App() {
   return (
@@ -55,6 +56,14 @@ function App() {
           element={
             <PublicRoute>
               <Register />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/resetPassword"
+          element={
+            <PublicRoute>
+              <ResetPassword />
             </PublicRoute>
           }
         />
