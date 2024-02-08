@@ -88,7 +88,10 @@ const createInventoryController = async (req, res) => {
       const inventory = new inventoryModel(inventoryData);
       await inventory.save();
 
-      if (remainingQuantity <= bufferedSize && availableQuantity > bufferedSize) {
+      if (
+        remainingQuantity <= bufferedSize &&
+        availableQuantity > bufferedSize
+      ) {
         const isbufferedproduct = true;
 
         return res.status(201).send({
@@ -97,7 +100,6 @@ const createInventoryController = async (req, res) => {
           isbufferedproduct,
         });
       } else {
-        
         const isbufferedproduct = false;
         return res.status(201).send({
           success: true,
@@ -151,7 +153,11 @@ const createInventoryController = async (req, res) => {
       const inventory = new inventoryModel(inventoryData);
       await inventory.save();
 
-      if (availableQuantity === 0 || availableQuantity > bufferedSize || newQuantity <= bufferedSize) {
+      if (
+        availableQuantity === 0 ||
+        availableQuantity > bufferedSize ||
+        newQuantity <= bufferedSize
+      ) {
         const notBufferedProduct = false;
         return res.status(201).send({
           success: true,
@@ -209,6 +215,76 @@ const getInventoryController = async (req, res) => {
       success: true,
       message: "Got all records",
       inventory,
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send({
+      success: false,
+      message: "Error in getting all inventory",
+      error,
+    });
+  }
+};
+
+//get pred records
+const getPredProductController = async (req, res) => {
+  try {
+    const season = req.params.currentSeason;
+    // Determine the month range based on the season
+    let monthRange;
+    if (season === "Summer") {
+      monthRange = ["03", "04", "05", "06"];
+    } else if (season === "Monsoon") {
+      monthRange = ["07", "08", "09", "10"];
+    } else if (season === "Winter") {
+      monthRange = ["11", "12", "01", "02"];
+    } else {
+      return res.status(400).send({
+        success: false,
+        message: "Invalid season provided",
+      });
+    }
+
+    const prediction = await inventoryModel
+      .aggregate([
+        // Match documents based on criteria
+        {
+          $match: {
+            inventoryType: "OUT",
+            $expr: {
+              $in: [
+                {
+                  $substr: ["$date", 3, 2],
+                },
+                monthRange,
+              ],
+            },
+          },
+        },
+        // Group by product and calculate the sum of OUT values
+        {
+          $group: {
+            _id: "$productName",
+            totalOUT: { $sum: "$quantity" }, // Assuming there's a "quantity" field in your schema
+          },
+        },
+        // Sort by totalOUT in descending order
+        {
+          $sort: { totalOUT: -1 },
+        },
+        // Limit to the first document (the one with the maximum OUT)
+        {
+          $limit: 1,
+        },
+      ])
+      .exec();
+
+    // Get the product name based on the result
+    //const product = prediction[0];
+    return res.status(200).send({
+      success: true,
+      message: "Got all records",
+      prediction,
     });
   } catch (error) {
     console.log(error);
@@ -378,4 +454,5 @@ module.exports = {
   deleteInventoryController,
   getSearchedInventoryController,
   getStatisticsInventoryController,
+  getPredProductController,
 };

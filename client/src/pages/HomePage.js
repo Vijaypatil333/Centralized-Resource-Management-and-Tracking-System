@@ -6,12 +6,15 @@ import Modal from "../components/shared/modal/Modal";
 import API from "../services/API";
 import { toast } from "react-toastify";
 import ReactPaginate from "react-js-pagination";
+import moment from "moment"; // to format the date and time
 
 const HomePage = () => {
   const { loading, error } = useSelector((state) => state.auth);
   const [data, setData] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [avaiQuant, setAvaiQuant] = useState("");
+  const [predProduct, setpredProduct] = useState("");
+  const [season, setSeason] = useState("");
   const [activePage, setActivePage] = useState(1);
   const itemsPerPage = 15;
 
@@ -66,6 +69,42 @@ const HomePage = () => {
     }
   };
 
+  //get prediction
+  const getPredictionRecords = async () => {
+    try {
+      const date = moment().format("DD/MM/YYYY"); //"01/07/2024"
+      const predMonth =
+        Number(date.slice(3, 5)) + 4 <= 12
+          ? Number(date.slice(3, 5)) + 4
+          : Number(date.slice(3, 5)) + 4 - 12;
+
+      let currentSeason;
+      if (3 <= predMonth && predMonth <= 6) {
+        currentSeason = "Summer";
+      } else if (7 <= predMonth && predMonth <= 10) {
+        currentSeason = "Monsoon";
+      } else {
+        currentSeason = "Winter";
+      }
+
+      setSeason(currentSeason);
+      //const month = predMonth < 10 ? "0"+ predMonth.toString() : predMonth.toString()
+      const { data } = await API.get(
+        `/inventory/get-pred-inventory/${currentSeason}`
+      );
+      if (data?.success) {
+        if (data?.prediction[0]) {
+          setpredProduct(data?.prediction[0]._id);
+        } else {
+          setpredProduct("NO RECORD FOUND");
+        }
+        //console.log(data?.prediction);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   //get function
   const getInventoryRecords = async () => {
     try {
@@ -78,9 +117,11 @@ const HomePage = () => {
       console.log(error);
     }
   };
+
   //to call the function at initial time
   useEffect(() => {
     getInventoryRecords();
+    getPredictionRecords();
   }, [searchQuery]);
 
   return (
@@ -91,6 +132,20 @@ const HomePage = () => {
         <Spinner />
       ) : (
         <>
+          <div
+            class="alert alert-warning alert-dismissible fade show"
+            role="alert"
+          >
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            <strong> Alert !!</strong> Prepare <strong> {predProduct}</strong>{" "}
+            for upcoming <strong> {season} </strong> Season
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="alert"
+              aria-label="Close"
+            ></button>
+          </div>
           <div className="cont">
             <div className="d-flex">
               <h5

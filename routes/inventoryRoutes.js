@@ -6,6 +6,7 @@ const {
   deleteInventoryController,
   getSearchedInventoryController,
   getStatisticsInventoryController,
+  getPredProductController,
   //getAvailableQuantityController,
 } = require("../controllers/inventoryController");
 
@@ -24,6 +25,13 @@ router.delete(
 
 //get all records
 router.get("/get-inventory", authMiddleware, getInventoryController);
+
+//get pred records
+router.get(
+  "/get-pred-inventory/:currentSeason",
+  authMiddleware,
+  getPredProductController
+);
 
 //get searched all records
 router.get(
