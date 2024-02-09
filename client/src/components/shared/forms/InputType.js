@@ -12,9 +12,9 @@ const InputType = ({
     <>
       <div className="mb-3">
         <label htmlFor={lableFor} className="form-group">
-          {lableText}
+          <b>{lableText}</b>
         </label>
-        <input 
+        <input
           type={inputType}
           className="form-control"
           name={name}

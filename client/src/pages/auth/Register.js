@@ -12,15 +12,15 @@ const Register = () => {
         <Spinner />
       ) : (
         <div className="row g-0">
-          <div className="col-md-8 form-banner">
+          <div className="banner">
             <img src="./banner2.jpg" alt="bannerImg2" />
-          </div>
-          <div className="col-md-4 login-container">
-            <ReuseForm
-              submitBtn={"Register"}
-              formTitle={"Registration Page"}
-              formType={"register"}
-            />
+            <div className="overlay">
+              <ReuseForm
+                submitBtn={"Register"}
+                formTitle={"Registration Page"}
+                formType={"register"}
+              />
+            </div>
           </div>
         </div>
       )}
