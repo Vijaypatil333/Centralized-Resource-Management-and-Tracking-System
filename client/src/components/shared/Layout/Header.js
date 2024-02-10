@@ -11,7 +11,7 @@ const Header = () => {
   //logout handler
   const handlelogout = () => {
     localStorage.clear(); //clear the taken and data
-    toast("Logout Successfully");
+    toast.success("Logout Successfully");
     navigate("/login");
   };
 
@@ -29,7 +29,8 @@ const Header = () => {
           <ul className="navbar-nav">
             <li className="nav-item1">
               <p className="nav-link">
-                <i>Welcome ! </i><br />
+                <i>Welcome ! </i>
+                <br />
                 <b className="h5">
                   <BiUserCircle /> {user?.name}
                 </b>

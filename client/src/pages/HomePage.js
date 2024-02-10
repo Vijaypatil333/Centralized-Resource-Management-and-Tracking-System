@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-distracting-elements */
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import Spinner from "../components/shared/Spinner";
@@ -136,9 +137,11 @@ const HomePage = () => {
             class="alert alert-warning alert-dismissible fade show"
             role="alert"
           >
-            <i class="fa-solid fa-triangle-exclamation"></i>
-            <strong> Alert !!</strong> Prepare <strong> {predProduct}</strong>{" "}
-            for upcoming <strong> {season} </strong> Season
+            <marquee>
+              <i class="fa-solid fa-triangle-exclamation"></i>
+              <strong> Alert !!</strong> Prepare <strong> {predProduct}</strong>{" "}
+              for upcoming <strong> {season} </strong> Season
+            </marquee>
             <button
               type="button"
               class="btn-close"
