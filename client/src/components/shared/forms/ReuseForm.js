@@ -174,6 +174,14 @@ const Form = ({ formType, submitBtn, formTitle }) => {
                 <b>Register !</b>
               </Link>
             </p>
+            ) : formType === "resetPassword" ? (
+              <p>
+                <b>Remembered password?</b>
+                <Link to="/login">
+                  {" "}
+                  <b>Login !</b>
+                </Link>
+              </p>
           ) : (
             <p>
               <b>Already registered? Please</b>
