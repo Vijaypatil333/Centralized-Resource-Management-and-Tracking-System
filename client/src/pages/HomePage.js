@@ -139,7 +139,7 @@ const HomePage = () => {
           >
             <marquee>
               <i class="fa-solid fa-triangle-exclamation"></i>
-              <strong> Alert !!</strong> Prepare <strong> {predProduct}</strong>{" "}
+              <strong> Warning !!</strong> Prepare <strong> {predProduct}</strong>{" "}
               for upcoming <strong> {season} </strong> Season
             </marquee>
             <button
@@ -150,7 +150,7 @@ const HomePage = () => {
             ></button>
           </div>
           <div className="cont">
-            <div className="d-flex">
+            <div className="cont-add">
               <h5
                 className="add"
                 data-bs-toggle="modal"

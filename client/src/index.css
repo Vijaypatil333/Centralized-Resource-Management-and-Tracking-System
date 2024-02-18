@@ -3,6 +3,7 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 /* login registration and reset password*/
 .banner img{
   position: absolute;
@@ -114,12 +115,11 @@
   height: 50px;
 }
 
-
-
 .pass{
   position: relative;
 }
 
+/* buttons of features*/
 .box{
   background: #ddd7d7;
   border-radius: 2cap;
@@ -132,22 +132,29 @@
 
 .searchbox{
   display: flex;
-  width:40%;
+  position: absolute;
+  right: 20px;
+  width:30%;
   height: 33px;
-  margin-top: 20px;
-  /*margin-left: 39%*/;
+  margin-top: 10px;
+}
+
+.cont-add{
+  display: flex;
+  width: 81vw;
 }
 
 .searchbox-buffered{
   display: flex;
-  width:100%;
+  width:80vw;
   height: 33px;
   margin: 20px;
-  /*margin-left: 39%*/;
 }
 
 .searchbox-all{
   display: flex;
+  position: absolute;
+  right: 20px;
   width:40%;
   height: 33px;
   margin-top: 20px;
@@ -157,7 +164,7 @@
 .add{
   width: 17%;
   text-align: center;
-  margin-top: 20px;
+  margin-top: 10px;
   padding: 3px 2px;
   background: #ddd7d7;
   border-width: 2px;
@@ -175,18 +182,33 @@
 }
 
 .availQuant{
-  margin: 0 122px;
-  margin-top: 20px;
+  margin-top: 10px;
   margin-bottom: 10px;
   padding: 5px 0; 
-  width: 190px;
+  width: 15vw;
+  margin-left: 10vw;
   text-align: center;
   background: #ddd7d7;
   border-radius: 2cap;
   border-width: 1px;
 }
 
+.search{
+  margin-right: 5px;
+}
 
+/* prediction alert */
+.alert{
+  width: 81vw;
+}
+
+/* data table */
+.table{
+  display: flexbox;
+  width: 81vw;
+}
+
+/* title of eaach page*/
 .stat-head{
   text-align: center;
   margin-top: 10px;
@@ -194,9 +216,11 @@
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-.search{
-  margin-right: 5px;
+/* page number */
+.pagination{
+  width: 81vw;
 }
+
 
 @media only screen and (max-width: 767px) {
 
@@ -227,7 +251,7 @@
     .nav-item2 {
         position: relative;
         top: auto;
-        left: 250px;
+        left: 150vw;
     }
 
     .logo {
@@ -243,23 +267,35 @@
         rgb(0, 205, 205) 45%,
         rgba(0, 32, 45, 0.938) 100%
       );
-        width: 900px;
+        width: 310vw;
+    }
+
+    .table{
+      width: 310vw;
+    }
+
+    .cont-add{
+      display: flex;
+      width: 310vw;
     }
 
     .searchbox {
-        width: 100%;
-        margin: 10px 0;
+      display: flex;
+      position: absolute;
+      left: 200vw;
+      width:70%;
+      margin: 10px 10px;
     }
 
     .add {
-      width: 50%;
+      width: 20%;
       margin-top: 10px;
   }
 
     .availQuant {
-        margin: 110px;
+        margin: 100px;
         padding: 5px;
-        width: 50%;
+        width: 20%;
         margin-top: 10px;
         margin-bottom: 10px;
     }
@@ -275,9 +311,20 @@
     }
     .stat-head{
       text-align: center;
-      width: 900px;
+      width: 310vw;
       margin-top: 20px;
       font-size: xx-large;
       font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+    .alert{
+      width: 310vw;
+    }
+
+    .statistics{
+      width: 310vw;
+    }
+
+    .pagination{
+      width: 310vw;
     }
 }

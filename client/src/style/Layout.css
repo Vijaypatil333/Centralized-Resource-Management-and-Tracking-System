@@ -52,8 +52,6 @@
     color: rgb(6, 0, 94);
 }
 
-
-
 .cont{
     width: 110%;
     max-width: 1100px;
@@ -72,7 +70,7 @@
     rgb(0, 164, 205) 85%
   );
         height: 80px;
-        width: 900px;
+        width: 310vw;
     }
 
     .menu {

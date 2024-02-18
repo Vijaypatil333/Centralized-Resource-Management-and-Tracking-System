@@ -86,7 +86,7 @@ const Statistics = () => {
       ) : (
         <>
           <div className="stat-head">Product Statistics</div>
-          <div>
+          <div className="statistics">
             <Chart options={chartOptions} series={chartSeries} type="bar" />
           </div>
         </>
