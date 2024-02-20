@@ -124,7 +124,7 @@ const Modal = () => {
               </div>
               <div className="modal-body">
                 <div className="d-flex mb-2">
-                  Inventory Type :
+                  <b>Inventory Type :</b>
                   <div className="form-check ms-2">
                     <input
                       type="radio"
@@ -135,7 +135,7 @@ const Modal = () => {
                       onChange={(e) => setInventoryType(e.target.value)}
                     />
                     <lable htmlFor="IN" className="form-check-lable">
-                      IN
+                      <b>IN</b>
                     </lable>
                   </div>
                   <div className="form-check ms-2">
@@ -147,7 +147,7 @@ const Modal = () => {
                       onChange={(e) => setInventoryType(e.target.value)}
                     />
                     <lable htmlFor="OUT" className="form-check-lable">
-                      OUT
+                      <b>OUT</b>
                     </lable>
                   </div>
                 </div>

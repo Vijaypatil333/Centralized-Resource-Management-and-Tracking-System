@@ -139,7 +139,7 @@ const HomePage = () => {
           >
             <marquee>
               <i class="fa-solid fa-triangle-exclamation"></i>
-              <strong> Warning !!</strong> Prepare <strong> {predProduct}</strong>{" "}
+              <strong> Alert !!</strong> Prepare <strong> {predProduct}</strong>{" "}
               for upcoming <strong> {season} </strong> Season
             </marquee>
             <button
