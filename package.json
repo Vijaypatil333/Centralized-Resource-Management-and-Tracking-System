@@ -23,6 +23,7 @@
     "lucide-react": "^0.294.0",
     "mongoose": "^7.4.4",
     "morgan": "^1.10.0",
-    "nodemon": "^3.0.1"
+    "nodemon": "^3.0.1",
+    "path": "^0.12.7"
   }
 }
