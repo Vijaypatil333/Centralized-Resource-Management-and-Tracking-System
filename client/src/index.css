@@ -20,7 +20,7 @@
   transform: translate(-50%, -50%);
   background: rgba(170, 169, 169, 0.274);
   border-radius: 30px;
-  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.719);
+  box-shadow: 3px 3px 20px 10px rgba(0, 0, 0, 0.356);
 }
 
 .eye-login {
