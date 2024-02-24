@@ -130,7 +130,7 @@ const AllMaterials = () => {
                     Raw Material
                   </th>
                   <th class="table-info" scope="col">
-                    Buffer Size
+                    Buffer Size (gm/ml)
                   </th>
                 </tr>
               </thead>
