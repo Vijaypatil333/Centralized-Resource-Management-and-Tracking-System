@@ -163,13 +163,13 @@ const Form = ({ formType, submitBtn, formTitle }) => {
           {formType === "login" ? (
             <p>
               <p>
-                <Link to="/resetPassword">
+                <Link to="/resetPassword" class ="links">
                   {" "}
                   <b>Forgot passward ?</b>
                 </Link>
               </p>
               <b>Not registered yet?</b>
-              <Link to="/register">
+              <Link to="/register" class ="links">
                 {" "}
                 <b>Register !</b>
               </Link>
@@ -177,7 +177,7 @@ const Form = ({ formType, submitBtn, formTitle }) => {
             ) : formType === "resetPassword" ? (
               <p>
                 <b>Remembered password?</b>
-                <Link to="/login">
+                <Link to="/login" class ="links">
                   {" "}
                   <b>Login !</b>
                 </Link>
@@ -185,7 +185,7 @@ const Form = ({ formType, submitBtn, formTitle }) => {
           ) : (
             <p>
               <b>Already registered? Please</b>
-              <Link to="/login">
+              <Link to="/login" class ="links">
                 {" "}
                 <b>Login !</b>
               </Link>
