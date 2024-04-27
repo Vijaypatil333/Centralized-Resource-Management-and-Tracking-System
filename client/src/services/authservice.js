@@ -22,7 +22,7 @@ export const handleRegister = (e, name, email, password, secretKey) => {
       return toast("Please Provide all Credentials"); //if input is empty
     }
     //secret key if matched then only register
-    if (secretKey === '744766'){
+    if (secretKey === '123@098'){
       store.dispatch(userRegister({ name, email, password, secretKey}));
     }
     else{
@@ -40,7 +40,7 @@ export const handleResetPassword = (e, email, password, secretKey) => {
       return toast("Please Provide all Credentials"); //if input is empty
     }
     //secret key if matched then only register
-    if (secretKey === '744766'){
+    if (secretKey === '123@098'){
       store.dispatch(userResetPassword({ email, password, secretKey}));
     }
     else{
